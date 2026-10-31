@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Really Sorry ❤️</title><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg,#ffc0d9,#e8baff,#ffcce5);
+    font-family: 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px);
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 40px #d66b9b66;
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from {opacity:0; transform:scale(.7);}
+    to {opacity:1; transform:scale(1);}
+}
+
+.panda {
+    font-size: 100px;
+    animation: sad 2s infinite ease-in-out;
+    margin: 15px 0;
+}
+
+@keyframes sad {
+    0%,100% {transform:translateY(0);}
+    50% {transform:translateY(-10px);}
+}
+
+h1 {
+    color: #c02c71;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #763653;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+button {
+    border: none;
+    padding: 13px 22px;
+    margin: 7px;
+    border-radius: 30px;
+    background: linear-gradient(45deg,#ff4f91,#ff86b4);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #e66a9a66;
+    transition: .3s;
+}
+
+button:active {
+    transform: scale(.9);
+}
+
+.no {
+    background: linear-gradient(45deg,#777,#aaa);
+}
+
+.hidden {
+    display: none;
+}
+
+.heart {
+    font-size: 40px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    50% {transform:scale(1.3);}
+}
+
+.floating {
+    position: fixed;
+    top: -50px;
+    font-size: 28px;
+    pointer-events: none;
+    z-index: 10;
+    animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.empty-box {
+    height: 150px;
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(255,255,255,.4);
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.small {
+    font-size: 13px;
+    color: #9d4770;
+}
+</style></head><body><div class="container" id="first"><div class="panda">🐼</div>
+
+<h1>Meri Jaan ❤️</h1>
+
+<p>
+    I'm Really Sorry! 🥺<br>
+    Mujhe maaf kar dena meri jaan.<br>
+    Please naraz mat raho... 💗
+</p>
+
+<button onclick="forgive()">❤️ Maaf Kardo</button>
+
+<button class="no" onclick="notForgive()">🥺 Maaf Mat Karo</button>
+
+<p class="small">Please ek baar soch lo meri jaan... 🥹</p>
+
+</div><div class="container hidden" id="second"><div class="heart">❤️</div>
+
+<div class="panda">🐼💗</div>
+
+<h1>Yayyyy! 🥹❤️</h1>
+
+<p>
+    Mujhe pata tha meri jaan,<br>
+    tum mujhe maaf kar doge! 🥰<br><br>
+    Isliye meri taraf se bahut saara pyaar! 💋
+</p>
+
+<h1>Choose Your Surprise 💕</h1>
+
+<button onclick="kiss()">💋 Kiss</button>
+
+<button onclick="hug()">🫂 Hug</button>
+
+<button onclick="romance()">❤️ Romance</button>
+
+<p id="message"></p>
+
+</div><div class="container hidden" id="third"><div class="panda">🐼</div>
+
+<h1>🥺 Ohh!</h1>
+
+<p> </p>
+
+<div class="empty-box"></div>
+
+</div><script>
+
+function forgive() {
+    document.getElementById("first").classList.add("hidden");
+    document.getElementById("second").classList.remove("hidden");
+
+    createRain("❤️", 30);
+}
+
+function notForgive() {
+    document.getElementById("first").classList.add("hidden");
+    document.getElementById("third").classList.remove("hidden");
+}
+
+function createRain(symbol, count) {
+
+    for(let i=0; i<count; i++) {
+
+        setTimeout(() => {
+
+            let item = document.createElement("div");
+
+            item.className = "floating";
+            item.innerHTML = symbol;
+
+            item.style.left = Math.random()*100 + "vw";
+            item.style.animationDuration = (2+Math.random()*3)+"s";
+
+            document.body.appendChild(item);
+
+            setTimeout(() => item.remove(),5000);
+
+        },i*40);
+    }
+}
+
+function kiss() {
+    document.getElementById("message").innerHTML =
+    "Muaaaahhh! 💋💋 Bahut saare kisses sirf tumhare liye! ❤️";
+
+    createRain("💋",100);
+}
+
+function hug() {
+    document.getElementById("message").innerHTML =
+    "A big virtual hug for you! 🫂❤️";
+
+    createRain("🫂",100);
+}
+
+function romance() {
+    document.getElementById("message").innerHTML =
+    "<br><h2>I Love You! ❤️</h2>" +
+    "My Romantic Girl! 💗<br>" +
+    "You are amazing! 🥰";
+
+    createRain("💕",40);
+}
+
+</script></body>
+  </html>
